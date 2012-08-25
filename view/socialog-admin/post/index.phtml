@@ -1,0 +1,77 @@
+<?php foreach ($messages as $message): ?>
+	<div class="alert alert-success">
+		<?php echo $message; ?><br>
+	</div>
+<?php endforeach; ?>
+
+<div class="block">
+
+	<div class="block-head">
+		<h2>Posts</h2>
+	</div>
+
+	<div class="block-content">
+		
+		<a href="<?php echo $this->url('socialog-admin/post', array('action' => 'new')); ?>" 
+		   class="btn btn-primary pull-right">
+			New Post
+			<i class="icon-pencil icon-white"></i>
+		</a>
+		
+		<div class="clearfix"></div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th width="50">#</th>
+					<th>Title</th>
+					<th width="100">&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach ($posts as $post): ?>
+					<tr>
+						<td><?php echo $post->getId(); ?></td>
+						<td><?php echo $post->getTitle(); ?></td>
+						<td class="actions">
+							<div class="btn-group">
+								<a class="btn" href="<?php
+								echo $this->url('socialog-admin/post', array(
+									'action' => 'edit',
+									'id' => $post->getId(),
+								));
+								?>">Edit <i class="icon-edit"></i></a>
+								<a class="btn post-delete">
+									Delete <i class="icon-trash"></i>
+								</a>
+							</div>
+						</td>
+					</tr>
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+	</div>
+
+</div>
+<script type="text/javascript">
+$(function(){
+	$('a.post-delete').click(function(e){
+		e.preventDefault();
+		bootbox.dialog("Are you sure you want to remove the post?", [
+			{
+				'label': 'Remove post <i class="icon-trash"></i>',
+				'class': 'btn btn-danger',
+				'callback': function() {
+					
+				}
+			},
+			{
+				'label': 'Cancel',
+				'class': 'btn',
+				'callback': function() {
+					
+				}
+			}
+		]);
+	});
+});
+</script>

@@ -1,0 +1,72 @@
+<?php $basePath = $this->basePath() . '/../module/SocialogAdmin/public'; ?>
+<?php $nav = $this->navigation('socialog-admin-navigation'); ?>
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<?php echo $this->headTitle('Socialog')->setSeparator(' - ')->setAutoEscape(false) ?>
+
+		<!-- Le styles -->
+		<?php
+		echo $this->headLink()
+				->prependStylesheet($basePath . '/css/main.css')
+				->prependStylesheet($basePath . '/vendor/bootstrap/css/bootstrap.min.css')
+				->prependStylesheet($basePath . '/vendor/bootstrap/css/bootstrap-responsive.min.css')
+		?>
+		<style>
+			body {
+				padding-top: 60px;
+			}
+		</style>
+
+		<!-- Scripts -->
+		<?php
+		echo $this->headScript()
+				->prependFile($basePath . '/vendor/bootbox.min.js')
+				->prependFile($basePath . '/vendor/bootstrap/js/bootstrap.min.js')
+				->prependFile($this->basePath() . '/js/jquery-1.7.2.min.js')
+		?>
+
+	</head>
+
+	<body>
+
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<div class="container">
+						<a class="brand" href="#">Socialog</a>
+						<div class="nav-collapse collapse">
+							<?php echo $nav->menu()->setPartial('socialog-admin/layout/navigation'); ?>
+							<ul class="nav pull-right">
+								<li><a href="#">Link</a></li>
+								<li class="divider-vertical"></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a href="#">Action</a></li>
+										<li><a href="#">Another action</a></li>
+										<li><a href="#">Something else here</a></li>
+										<li class="divider"></li>
+										<li><a href="#">Separated link</a></li>
+									</ul>
+								</li>
+							</ul>
+						</div><!-- /.nav-collapse -->
+					</div>
+				</div><!-- /navbar-inner -->
+			</div>
+		</div>
+
+		<div class="container">
+
+			<?php echo $nav->breadcrumbs()->setPartial('socialog-admin/layout/breadcrumbs'); ?>
+
+			<?php echo $this->content; ?>
+
+		</div>
+
+	</body>
+</html>
+

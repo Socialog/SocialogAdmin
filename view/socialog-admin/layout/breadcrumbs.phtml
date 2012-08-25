@@ -1,0 +1,16 @@
+<?php $pagecount = count($pages); ?>
+
+<?php if($pagecount > 0): ?>
+	<ul class="breadcrumb">
+		<?php foreach ($pages as $nr => $page): ?>
+			<li class="<?php echo $page->getActive(true) ? 'active' : '';  ?>">
+				<a href="<?php echo $page->getHref(); ?>">
+					<?php echo $page->getLabel(); ?>
+					<?php if ($nr+1 < $pagecount): ?>
+					 <span class="divider">/</span>
+					 <?php endif; ?>
+				</a>
+			</li>
+		<?php endforeach; ?>
+	</ul>
+<?php endif; ?>
