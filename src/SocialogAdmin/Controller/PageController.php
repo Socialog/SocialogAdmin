@@ -22,7 +22,7 @@ class PageController extends AbstractController
     public function getPageMapper()
     {
         if (null == $this->pageMapper) {
-            $this->pageMapper = $this->getServiceLocator()->get('socialog-pagemapper');
+            $this->pageMapper = $this->getServiceLocator()->get('socialog_page_mapper');
         }
 
         return $this->pageMapper;

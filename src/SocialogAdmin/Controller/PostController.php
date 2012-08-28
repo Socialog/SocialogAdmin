@@ -5,6 +5,7 @@ namespace SocialogAdmin\Controller;
 use Socialog\Entity\Post as PostEntity;
 use Socialog\Mapper\PostMapper;
 use SocialogAdmin\Form\Post as PostForm;
+use Zend\View\Model\ViewModel;
 
 /**
  * Posts
@@ -22,7 +23,7 @@ class PostController extends AbstractController
     public function getPostMapper()
     {
         if (null == $this->postMapper) {
-            $this->postMapper = $this->getServiceLocator()->get('socialog-postmapper');
+            $this->postMapper = $this->getServiceLocator()->get('socialog_post_mapper');
         }
 
         return $this->postMapper;
@@ -81,8 +82,11 @@ class PostController extends AbstractController
     public function newAction()
     {
         $request = $this->getRequest();
+		$viewModel = new ViewModel;
+		$viewModel->setTemplate('socialog-admin/page/edit');
+		$viewModel->title = 'New post';
 
-        $form = new PostForm();
+		$viewModel->form = $form = new PostForm();
 		$form->get('submit')->setAttribute('value', 'Create new post');
 
         if ($request->isPost()) {
@@ -99,9 +103,6 @@ class PostController extends AbstractController
             }
         }
 
-        return array(
-			'title' => 'Edit Post',
-			'form'	=> $form,
-		);
+        return $viewModel;
     }
 }

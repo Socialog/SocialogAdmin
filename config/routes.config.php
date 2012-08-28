@@ -50,6 +50,23 @@ return array(
                     ),
                 ),
             ),
+
+            /**
+             * Pages Route
+             */
+            'user' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/user[/:action[/:id]]',
+                    'constraints' => array(
+                        'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'socialogadmin-user'
+                    ),
+                ),
+            ),
         ),
     ),
 );
