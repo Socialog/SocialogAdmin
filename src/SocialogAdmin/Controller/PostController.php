@@ -40,9 +40,9 @@ class PostController extends AbstractController
         $messages = $this->flashMessenger()->getMessages();
 
         return array(
-			'posts'		=> $posts,
-			'messages'	=> $messages,
-		);
+            'posts'		=> $posts,
+            'messages'	=> $messages,
+        );
     }
 
     /**
@@ -71,9 +71,9 @@ class PostController extends AbstractController
         }
 
         return array(
-			'title' => 'Edit Post',
-			'form'	=> $form,
-		);
+            'title' => 'Edit Post',
+            'form'	=> $form,
+        );
     }
 
     /**
@@ -82,12 +82,12 @@ class PostController extends AbstractController
     public function newAction()
     {
         $request = $this->getRequest();
-		$viewModel = new ViewModel;
-		$viewModel->setTemplate('socialog-admin/page/edit');
-		$viewModel->title = 'New post';
+        $viewModel = new ViewModel;
+        $viewModel->setTemplate('socialog-admin/page/edit');
+        $viewModel->title = 'New post';
 
-		$viewModel->form = $form = new PostForm();
-		$form->get('submit')->setAttribute('value', 'Create new post');
+        $viewModel->form = $form = new PostForm();
+        $form->get('submit')->setAttribute('value', 'Create new post');
 
         if ($request->isPost()) {
             $form->setData($request->getPost());

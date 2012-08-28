@@ -39,9 +39,9 @@ class PageController extends AbstractController
         $messages = $this->flashMessenger()->getMessages();
 
         return array(
-			'pages'		=> $pages,
-			'messages'	=> $messages,
-		);
+            'pages'		=> $pages,
+            'messages'	=> $messages,
+        );
     }
 
     /**
@@ -70,9 +70,9 @@ class PageController extends AbstractController
         }
 
         return array(
-			'title' => 'Edit Page',
-			'form'	=> $form,
-		);
+            'title' => 'Edit Page',
+            'form'	=> $form,
+        );
     }
 
     /**
@@ -83,7 +83,7 @@ class PageController extends AbstractController
         $request = $this->getRequest();
 
         $form = new PageForm();
-		$form->get('submit')->setAttribute('value', 'Create new page');
+        $form->get('submit')->setAttribute('value', 'Create new page');
 
         if ($request->isPost()) {
             $form->setData($request->getPost());
@@ -100,8 +100,8 @@ class PageController extends AbstractController
         }
 
         return array(
-			'title' => 'New Page',
-			'form'	=> $form,
-		);
+            'title' => 'New Page',
+            'form'	=> $form,
+        );
     }
 }
