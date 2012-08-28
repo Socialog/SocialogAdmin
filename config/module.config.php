@@ -3,15 +3,6 @@
 return array(
 
     /**
-     * Service Manager
-     */
-    'service_manager' => array(
-        'factories' => array(
-            'socialog-admin-navigation' => 'SocialogAdmin\Service\NavigationFactory'
-        ),
-    ),
-
-    /**
      * Router Configuration
      */
     'router' => array(
@@ -25,6 +16,7 @@ return array(
             'socialogadmin-home' => 'SocialogAdmin\Controller\AdminController',
             'socialogadmin-post' => 'SocialogAdmin\Controller\PostController',
             'socialogadmin-page' => 'SocialogAdmin\Controller\PageController',
+            'socialogadmin-user' => 'SocialogAdmin\Controller\UserController',
         ),
     ),
     /**
