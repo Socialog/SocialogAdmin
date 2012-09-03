@@ -15,6 +15,7 @@ class Module
     public function onBootstrap($e)
     {
         $app = $e->getApplication();
+        $sm = $app->getServiceManager();
 
         $sharedEvents = $app->getEventManager()->getSharedManager();
         $sharedEvents->attach('Zend\Mvc\Controller\AbstractController', 'dispatch', function($e) {
@@ -30,6 +31,29 @@ class Module
                 }
             }
         }, 9999);
+        
+
+        // Inhaken in menue
+        $sharedEvents->attach('render', array('post.edit', 'page.edit'), function($e) use ($sm) {
+            $view = $e->getTarget();
+            $cfg = $sm->get('Config');
+            if ($cfg['socialog-admin']['text-mode'] == 'wysiwyg') {
+                $basePath = $view->basePath() . '/../module/SocialogAdmin/public';
+                $view->headLink()
+                    ->appendStylesheet($basePath . '/vendor/wysihtml5/bootstrap-wysihtml5.css');
+                $view->headScript()        
+                    ->appendFile($basePath . '/vendor/wysihtml5/wysihtml5-0.3.0.min.js')
+                    ->appendFile($basePath . '/vendor/wysihtml5/bootstrap-wysihtml5.js')
+                    ->appendScript(<<<SCRIPT
+<script type="text/javascript">
+    $(function(){
+        $('textarea[name=content]').wysihtml5();
+    });
+</script>
+SCRIPT
+ );
+            }
+        }, 100);
     }
 
     /**
