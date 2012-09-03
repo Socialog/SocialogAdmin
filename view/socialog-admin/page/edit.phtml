@@ -1,13 +1,5 @@
 <?php
-$basePath = $this->basePath() . '/../module/SocialogAdmin/public';
-
-$this->headLink()
-	->appendStylesheet($basePath . '/vendor/wysihtml5/bootstrap-wysihtml5.css');
-		
-$this->headScript()
-	->appendFile($basePath . '/vendor/wysihtml5/wysihtml5-0.3.0.min.js')
-	->appendFile($basePath . '/vendor/wysihtml5/bootstrap-wysihtml5.js');
-
+$this->triggerEvent('page.edit');
 
 $form = $this->form;
 $form->prepare();
@@ -20,19 +12,23 @@ $form->prepare();
 	</div>
 
 	<div class="block-content">
+          
 		<?php echo $this->form()->openTag($form); ?>
 		<?php echo $this->formHidden($form->get('id')); ?>
-		<div class="control-group">
-			<label class="control-label" for="inputEmail">Title</label>
+		
+        <!-- Title -->
+        <div class="control-group">
+			<label class="control-label" for="title">Title</label>
 			<div class="controls">
 				<?php echo $this->formText($form->get('title')); ?>
 				<span class="help-inline"></span>
 				<?php echo $this->formElementErrors($form->get('title')); ?>
 			</div>
 		</div>
-
+        
+        <!-- Content -->
 		<div class="control-group">
-			<label class="control-label" for="inputEmail">Content</label>
+			<label class="control-label" for="content">Content</label>
 			<div class="controls">
 				<?php echo $this->formTextarea($form->get('content')); ?>
 				<?php echo $this->formElementErrors($form->get('content')); ?>
@@ -49,9 +45,3 @@ $form->prepare();
 	</div>
 
 </div>
-<script type="text/javascript">
-$(function(){
-	$('textarea[name=content]').wysihtml5();
-});
-</script>
-

@@ -2,12 +2,17 @@
 
 return array(
 
+    'socialog-admin' => array(
+        'text-mode' => 'markdown',
+    ),
+    
     /**
      * Router Configuration
      */
     'router' => array(
         'routes' => include __DIR__ . '/routes.config.php',
     ),
+    
     /**
      * Controller Configuration
      */
@@ -19,6 +24,7 @@ return array(
             'socialogadmin-user' => 'SocialogAdmin\Controller\UserController',
         ),
     ),
+    
     /**
      * ViewManager Configuration
      */
@@ -27,7 +33,7 @@ return array(
             __DIR__ . '/../view',
         ),
     ),
-
+    
     /**
      * Admin Navigation
      */

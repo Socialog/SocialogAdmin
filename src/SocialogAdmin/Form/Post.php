@@ -39,7 +39,7 @@ class Post extends Form
                 'label' => 'Content',
             ),
         ));
-
+        
         $this->add(array(
             'name' => 'submit',
             'attributes' => array(
