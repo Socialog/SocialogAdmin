@@ -83,7 +83,7 @@ class PostController extends AbstractController
     {
         $request = $this->getRequest();
         $viewModel = new ViewModel;
-        $viewModel->setTemplate('socialog-admin/page/edit');
+        $viewModel->setTemplate('socialog-admin/post/edit');
         $viewModel->title = 'New post';
 
         $viewModel->form = $form = new PostForm();

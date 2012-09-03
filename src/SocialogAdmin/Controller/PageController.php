@@ -5,6 +5,7 @@ namespace SocialogAdmin\Controller;
 use Socialog\Entity\Page as PageEntity;
 use Socialog\Mapper\PageMapper;
 use SocialogAdmin\Form\Page as PageForm;
+use Zend\View\Model\ViewModel;
 
 /**
  * Pages
@@ -81,8 +82,11 @@ class PageController extends AbstractController
     public function newAction()
     {
         $request = $this->getRequest();
+        $viewModel = new ViewModel;
+        $viewModel->setTemplate('socialog-admin/page/edit');
+        $viewModel->title = 'New page';
 
-        $form = new PageForm();
+        $viewModel->form = $form = new PageForm();
         $form->get('submit')->setAttribute('value', 'Create new page');
 
         if ($request->isPost()) {
@@ -99,9 +103,6 @@ class PageController extends AbstractController
             }
         }
 
-        return array(
-            'title' => 'New Page',
-            'form'	=> $form,
-        );
+        return $viewModel;
     }
 }
