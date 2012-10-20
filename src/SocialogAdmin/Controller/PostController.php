@@ -36,7 +36,7 @@ class PostController extends AbstractController
     {
         $postMapper = $this->getPostMapper();
 
-        $posts = $postMapper->selectWith($postMapper->select()->order('id DESC'));
+        $posts = $postMapper->findLatestPosts();
         $messages = $this->flashMessenger()->getMessages();
 
         return array(

@@ -21,15 +21,11 @@ Test 2
     }
     public function testAction()
     {
-        echo 'test';
         $post = new Post;
         $post->setTitle('           sdfasdfsadfm     asdfsafasfsadf     ');
         $post->setContent('asfdasf');
         
-        var_dump( $post->isValid() );
-        var_dump( $post );
-        print_r($post->getInputFilter()->getMessages());
-        
-        exit;
+        //$db = $this->getServiceLocator()->get('doctrine.connection.orm_default');
+
     }
 }

@@ -52,7 +52,7 @@ class Db implements ServiceManagerAwareInterface, AdapterInterface
         $email		= $post['email'];
 
         $user = $this->getUserMapper()->findByEmail($email);
-
+        
         // Check if we have a valid user
         if (!$user) {
             return new Result(Result::FAILURE_IDENTITY_NOT_FOUND, null, array(

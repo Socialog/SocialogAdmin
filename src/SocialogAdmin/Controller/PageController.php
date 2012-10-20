@@ -36,7 +36,7 @@ class PageController extends AbstractController
     {
         $pageMapper = $this->getPageMapper();
 
-        $pages = $pageMapper->selectWith($pageMapper->select()->order('id DESC'));
+        $pages = $pageMapper->findAllPages();
         $messages = $this->flashMessenger()->getMessages();
 
         return array(
