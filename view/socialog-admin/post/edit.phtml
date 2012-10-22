@@ -1,4 +1,7 @@
 <?php
+
+use Socialog\Entity\Post;
+
 $this->triggerEvent('post.edit');
 
 $form = $this->form;
@@ -36,13 +39,7 @@ $form->prepare();
 		<div class="control-group">
 			<label class="control-label" for="content">Status</label>
 			<div class="controls">
-                <select>
-                  <option>Published</option>
-                  <option>Draft</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
+                <?php echo $this->formSelect($form->get('status')); ?>
 			</div>
 		</div>
 

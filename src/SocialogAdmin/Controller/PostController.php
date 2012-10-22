@@ -36,7 +36,7 @@ class PostController extends AbstractController
     {
         $postMapper = $this->getPostMapper();
 
-        $posts = $postMapper->findLatestPosts();
+        $posts = $postMapper->getRepository()->findAll();
         $messages = $this->flashMessenger()->getMessages();
 
         return array(

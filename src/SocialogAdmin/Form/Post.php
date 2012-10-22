@@ -3,7 +3,9 @@
 namespace SocialogAdmin\Form;
 
 use Zend\Form\Form;
+use Zend\Form\Element;
 use Zend\Stdlib\Hydrator\ClassMethods;
+use Socialog\Entity\Post as PostEntity;
 
 class Post extends Form
 {
@@ -49,6 +51,14 @@ class Post extends Form
                 'class' => 'btn btn-primary',
             ),
         ));
+
+        $status = new Element\Select('status');
+        $status->setValueOptions(array(
+           PostEntity::STATUS_PUBLISHED => 'Publish',
+           PostEntity::STATUS_DRAFT     => 'Draft',
+        ));
+        
+        $this->add($status);
 
         $this->setHydrator(new ClassMethods(false));
     }
